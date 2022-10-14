@@ -19,13 +19,38 @@ public class BattleShip extends AbstractBattleShip {
             System.out.println("Invalid input. Try again...");
         }
     }
+
+    /*
+    Needing to implement Task 1.3 properly
+    */
     @Override
     public boolean checkAttack (int row,int column){
-        if (shipCoordinates[row][column] == '*') {
-            return true;
-        } else {
-            return false;
+        
+        /*
+        for (int i = 0; i < shipCoordinates.length; i++) {
+            for (int j = 0; j < shipCoordinates[i].length; j++) {
+                if (shipCoordinates[i][j] == column) {
+                    if (hits < 3){
+                        hits += 1;
+                        return true;
+                    }
+                }
+            }
         }
+        return false;
+        */
+        /*
+        if (shipCoordinates[row - 1][column - 1] != '.') {
+            if (hits < 3) {
+                hits += 1;
+                return true;
+            } else {
+                return false;
+            }
+        }
+        return false;
+        */
+        return false; // placeholder return statement
     }
     @Override
 	public String getName(){
