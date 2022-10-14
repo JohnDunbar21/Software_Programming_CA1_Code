@@ -21,27 +21,31 @@ public class BattleShip extends AbstractBattleShip {
     }
     @Override
     public boolean checkAttack (int row,int column){
-        return true; // temporary for now
+        if (shipCoordinates[row][column] == '*') {
+            return true;
+        } else {
+            return false;
+        }
     }
     @Override
 	public String getName(){
-        return name;
+        return this.name;
     }
     @Override
 	public int getHits() {
-        return hits;
+        return this.hits;
     }
     @Override
 	public String getShipOrientation() {
-        return shipOrientation;
+        return this.shipOrientation;
     }
     @Override
 	public void setHits(int numberOfHits) {
-        this.hits = hits;
+        this.hits = numberOfHits;
     }
     @Override
 	public int[][] getShipCoordinates() {
-        return shipCoordinates;
+        return this.shipCoordinates;
     }
     @Override
 	public void setShipCoordinates(int [][] coordinates) {
