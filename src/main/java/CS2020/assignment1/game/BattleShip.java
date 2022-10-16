@@ -25,7 +25,21 @@ public class BattleShip extends AbstractBattleShip {
     */
     @Override
     public boolean checkAttack (int row,int column){
-        
+        /*
+        for (int j = 0; j < this.shipCoordinates.length; j++) {
+            for (int i = 0; i < this.shipCoordinates[j].length; i++) {
+                if (this.shipCoordinates[j].equals(row - 1)) {
+                    if (this.shipCoordinates[j][i] == column){
+                        if (hits < 3) {
+                            this.hits += 1;
+                            this.shipCoordinates[j] = new int[] {-1, -1};
+                            return true;
+                        }
+                    }
+                }
+            }
+        }
+        return false;
         /*
         for (int i = 0; i < shipCoordinates.length; i++) {
             for (int j = 0; j < shipCoordinates[i].length; j++) {

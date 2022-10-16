@@ -176,7 +176,8 @@ public class GameTests {
 	    }	
 		
 	}
-/*	
+*/
+	
 	@Test
 	public void t2_2() {
 	       
