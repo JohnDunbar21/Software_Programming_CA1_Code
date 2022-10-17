@@ -25,13 +25,18 @@ public class BattleShip extends AbstractBattleShip {
     */
     @Override
     public boolean checkAttack (int row,int column){
-        int[] coordinates = {row, column};
-        for(int i = 0; i < shipCoordinates.length; i++) {
-            if(shipCoordinates[i] == coordinates) {
-                if(hits < 3) {
-                    hits += 1;
-                    shipCoordinates[i] = new int[] {-1, -1};
-                    return true;
+        
+        /*
+        for(int i = 0; i < this.shipCoordinates.length; i++) {
+            for(int j = 1; j <= this.shipCoordinates[i].length; j++) {
+                if(this.shipCoordinates[i][j] == row) {
+                    if(this.shipCoordinates[i][j-1] == column) {
+                        if(this.hits < 3) {
+                            this.hits += 1;
+                            this.shipCoordinates[i] = new int[] {-1, -1};
+                            return true;
+                        }
+                    }
                 }
             }
         }
