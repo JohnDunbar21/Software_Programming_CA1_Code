@@ -28,9 +28,9 @@ public class BattleShip extends AbstractBattleShip {
         
         /*
         for(int i = 0; i < this.shipCoordinates.length; i++) {
-            for(int j = 1; j <= this.shipCoordinates[i].length; j++) {
+            for(int j = 0; j < this.shipCoordinates[i].length; j++) {
                 if(this.shipCoordinates[i][j] == row) {
-                    if(this.shipCoordinates[i][j-1] == column) {
+                    if(this.shipCoordinates[i][j+1] == column) {
                         if(this.hits < 3) {
                             this.hits += 1;
                             this.shipCoordinates[i] = new int[] {-1, -1};

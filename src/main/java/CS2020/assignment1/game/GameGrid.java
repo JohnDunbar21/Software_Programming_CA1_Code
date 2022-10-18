@@ -10,6 +10,7 @@ public class GameGrid extends AbstractGameGrid {
     }
     @Override
 	public void initializeGrid(int width, int height) {
+        gameGrid = new String[width][height];
         for (int i = 0; i < width; i++) {
             for (int j = 0; j < height; j++) {
                 this.gameGrid[i][j] = ".";
