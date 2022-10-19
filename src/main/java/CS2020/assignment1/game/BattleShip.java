@@ -3,6 +3,7 @@ package CS2020.assignment1.game;
 import java.util.Random;
 
 public class BattleShip extends AbstractBattleShip {
+    int size = 3; // default size value
 
     public BattleShip(String name) {
         // set the name of the name class attribute to the passed parameter
