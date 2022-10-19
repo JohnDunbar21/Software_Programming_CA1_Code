@@ -4,6 +4,11 @@ public abstract class AbstractGameGrid {
 	
 	public String [][] gameGrid;
 	public BattleShip[] ships;
+
+	public 	AbstractGameGrid(int width, int height, int numberOfShips) {
+		this.gameGrid = new String[width][height];
+		this.ships = new BattleShip[numberOfShips];
+	}
 		
     //populate the grid with "." characters
 	public abstract void initializeGrid (int width, int height) ;

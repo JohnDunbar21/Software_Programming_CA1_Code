@@ -5,14 +5,15 @@ import java.util.Random;
 public class GameGrid extends AbstractGameGrid {
 
     public GameGrid(int width, int height, int numberOfShips) {
+        super(width, height, numberOfShips);
         initializeGrid(width, height);
         generateShips(numberOfShips);
     }
     @Override
 	public void initializeGrid(int width, int height) {
-        gameGrid = new String[width][height];
-        for (int i = 0; i < width; i++) {
-            for (int j = 0; j < height; j++) {
+        //this.gameGrid = new String[width][height];
+        for (int i = 0; i < this.gameGrid.length; i++) {
+            for (int j = 0; j < this.gameGrid[i].length; j++) {
                 this.gameGrid[i][j] = ".";
             }
         }
@@ -23,8 +24,8 @@ public class GameGrid extends AbstractGameGrid {
     }
 	@Override
 	public void generateShips (int numberOfShips) {
-        for (int s = 0; s < numberOfShips; s++) {
-            this.ships[s] = new BattleShip("Ship "+s);
+        for (int s = 0; s < ships.length; s++) {
+            this.ships[s] = new BattleShip("Ship "+(s+1));
         }
     }
 }
