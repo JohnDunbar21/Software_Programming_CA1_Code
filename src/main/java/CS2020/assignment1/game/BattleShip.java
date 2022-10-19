@@ -20,35 +20,16 @@ public class BattleShip extends AbstractBattleShip {
         }
     }
 
-    /*
-    Needing to implement Task 1.3 properly
-    */
     @Override
     public boolean checkAttack (int row,int column){
-        
-        /*
         for(int i = 0; i < this.shipCoordinates.length; i++) {
-            for(int j = 0; j < this.shipCoordinates[i].length; j++) {
-                if(this.shipCoordinates[i][j] == row) {
-                    if(this.shipCoordinates[i][j+1] == column) {
+            for(int j = 1; j < this.shipCoordinates[i].length; j++) {
+                if(this.shipCoordinates[i][j-1] == row) {
+                    if(this.shipCoordinates[i][j] == column) {
                         if(this.hits < 3) {
                             this.hits += 1;
-                            this.shipCoordinates[i] = new int[] {-1, -1};
-                            return true;
-                        }
-                    }
-                }
-            }
-        }
-        
-        /*
-        for (int j = 0; j < this.shipCoordinates.length; j++) {
-            for (int i = 0; i < this.shipCoordinates[j].length; i++) {
-                if (this.shipCoordinates[j].equals(row - 1)) {
-                    if (this.shipCoordinates[j][i] == column){
-                        if (hits < 3) {
-                            this.hits += 1;
-                            this.shipCoordinates[j] = new int[] {-1, -1};
+                            this.shipCoordinates[i][j-1] = -1;
+                            this.shipCoordinates[i][j] = -1;
                             return true;
                         }
                     }
@@ -56,31 +37,6 @@ public class BattleShip extends AbstractBattleShip {
             }
         }
         return false;
-        /*
-        for (int i = 0; i < shipCoordinates.length; i++) {
-            for (int j = 0; j < shipCoordinates[i].length; j++) {
-                if (shipCoordinates[i][j] == column) {
-                    if (hits < 3){
-                        hits += 1;
-                        return true;
-                    }
-                }
-            }
-        }
-        return false;
-        */
-        /*
-        if (shipCoordinates[row - 1][column - 1] != '.') {
-            if (hits < 3) {
-                hits += 1;
-                return true;
-            } else {
-                return false;
-            }
-        }
-        return false;
-        */
-        return false; // placeholder return statement
     }
     @Override
 	public String getName(){
