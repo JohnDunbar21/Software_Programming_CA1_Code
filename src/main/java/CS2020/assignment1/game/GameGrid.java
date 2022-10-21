@@ -1,7 +1,6 @@
 package CS2020.assignment1.game;
 
 import java.util.Random;
-import java.lang.Math;
 
 public class GameGrid extends AbstractGameGrid {
 
@@ -9,7 +8,9 @@ public class GameGrid extends AbstractGameGrid {
         super(width, height, numberOfShips);
         initializeGrid(width, height);
         generateShips(numberOfShips);
+        //placeShips(ships);
     }
+
     @Override
 	public void initializeGrid(int width, int height) {
         //this.gameGrid = new String[width][height];
@@ -18,21 +19,29 @@ public class GameGrid extends AbstractGameGrid {
                 this.gameGrid[i][j] = ".";
             }
         }
+        System.out.println(this.gameGrid); // checking if grid initialised
     }
-    
+    // helper method
+    /*
+    public void placeShips(BattleShip[] ship) {
+        for(int i = 0; i < ships.length; i++) {
+            placeShip(ships[i]);
+        }
+    }
+    */
     // method not working at the moment
 	@Override
 	public void placeShip (BattleShip ship) {
         Random random = new Random(); // create Random object
-
-        for(int i = 0; i < gameGrid.length; i++) { // iterate through the rows of the grid
-            for(int j = 0; j < gameGrid[i].length; j++) { // iterate through the columns of the grid
+        
+        for(int i = 0; i < this.gameGrid.length; i++) { // iterate through the rows of the grid
+            for(int j = 0; j < this.gameGrid[i].length; j++) { // iterate through the columns of the grid
                 if(ship.shipOrientation == "horizontal") { // check if the orientation is horizontal
                     int[][] shipCoordinatesRandomH = new int[ship.size][2]; // generate an array to store locations
                     for(int z = 0; z < ship.size; z++) { // iterate through the length of the ship
-                        int randX = random.nextInt(gameGrid.length + 1); // generate a random x-coordinate
-                        int randY = random.nextInt(gameGrid[i].length + 1); // generate a random y-coordinate
-                        gameGrid[randX][randY-1] = "*"; // assign a ship marker to the random location
+                        int randX = random.nextInt(this.gameGrid.length + 1); // generate a random x-coordinate
+                        int randY = random.nextInt(this.gameGrid[i].length + 1); // generate a random y-coordinate
+                        this.gameGrid[randX][z] = "*"; // assign a ship marker to the random location
                         shipCoordinatesRandomH[z][0] = randX; // assign an x-location in locations array
                         shipCoordinatesRandomH[z][1] = randY; // assign a y-location in locations array
                     }
@@ -41,15 +50,16 @@ public class GameGrid extends AbstractGameGrid {
                 else { // if the ship is not horizontal, it can only be vertical
                     int[][] shipCoordinatesRandomV = new int[ship.size][2]; // generate an array to store locations
                     for(int z = 0; z < ship.size; z++) { // iterate through the length of the ship
-                        int randX = random.nextInt(gameGrid.length + 1); // generate a random x-coordinate
-                        int randY = random.nextInt(gameGrid[i].length + 1); // generate a random y-coordinate
-                        gameGrid[randX-1][randY] = "*"; // assign a ship marker to the random location
+                        int randX = random.nextInt(this.gameGrid.length + 1); // generate a random x-coordinate
+                        int randY = random.nextInt(this.gameGrid[i].length + 1); // generate a random y-coordinate
+                        this.gameGrid[z][randY] = "*"; // assign a ship marker to the random location
                         shipCoordinatesRandomV[z][0] = randX; // assign an x-location in locations array
                         shipCoordinatesRandomV[z][1] = randY; // assign a y-location in locations array
                     }
                     ship.setShipCoordinates(shipCoordinatesRandomV); // update ships array with all coordinates
                 }
             }
+            
         }
 
         /*
