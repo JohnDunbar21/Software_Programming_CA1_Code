@@ -200,7 +200,7 @@ public class GameTests {
 	    }	
 		
 	}
-/*	
+	
 	@Test
 	public void t2_3() {
 	       
@@ -262,7 +262,7 @@ public class GameTests {
 	    }	
 		
 	}
-*/	
+	
 	@Test
 	public void t2_4() {
 	       

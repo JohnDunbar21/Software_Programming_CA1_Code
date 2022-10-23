@@ -8,11 +8,11 @@ public class GameGrid extends AbstractGameGrid {
         super(width, height, numberOfShips);
         initializeGrid(width, height);
         generateShips(numberOfShips);
-        /*
-        for(int i = 1; i <= numberOfShips; i++) {
-            placeShip(ships[i]);
+        
+        for(BattleShip ship: super.ships) {
+            placeShip(ship);
         }
-        */
+        
     }
 
     @Override
@@ -28,7 +28,53 @@ public class GameGrid extends AbstractGameGrid {
 	@Override
 	public final void placeShip (BattleShip ship) {
         Random random = new Random(); // create Random object
-        
+
+        int randX = random.nextInt((super.gameGrid.length + 1)/2);
+        int randY = random.nextInt((super.gameGrid[0].length + 1)/2);
+
+        int[][] coordinates = new int[3][2];
+    
+        if(ship.shipOrientation == "horizontal") {
+            for(int i = 0; i < super.gameGrid.length; i++) {
+                for(int j = 0; j < super.gameGrid[i].length; j++) {
+                    if(super.gameGrid[randX][randY] == "."){
+                        //for(int c = 0; c < 3; c++) {
+                            this.gameGrid[randX][randY] = "*";
+                            this.gameGrid[randX][randY+1] = "*";
+                            this.gameGrid[randX][randY+2] = "*";
+                            coordinates[0][0] = randX;
+                            coordinates[0][1] = randY;
+                            coordinates[1][0] = randX;
+                            coordinates[1][0] = randY+1;
+                            coordinates[2][0] = randX;
+                            coordinates[2][0] = randY+2;
+                        //}
+                    }
+                }
+            }
+        }
+        else if(ship.shipOrientation == "vertical") {
+            int[][] verticalCoordinates = new int[3][2];
+            for(int i = 0; i < super.gameGrid.length; i++) {
+                for(int j = 0; j < 3; j++) {
+                    if(super.gameGrid[randX][randY] == "."){
+                        //for(int c = 0; c < 3; c++) {
+                            this.gameGrid[randX][randY] = "*";
+                            this.gameGrid[randX+1][randY] = "*";
+                            this.gameGrid[randX+2][randY] = "*";
+                            coordinates[0][0] = randX;
+                            coordinates[0][1] = randY;
+                            coordinates[1][0] = randX+1;
+                            coordinates[1][0] = randY;
+                            coordinates[i][0] = randX+2;
+                            coordinates[i][0] = randY;
+                        //}
+                    }
+                }
+            }
+        }
+        ship.setShipCoordinates(coordinates);
+        /*
         for(int i = 1; i < gameGrid.length; i++) { // iterate through the rows of the grid
             for(int j = 1; j < gameGrid[i].length; j++) { // iterate through the columns of the grid
                 if(ship.shipOrientation == "horizontal") { // check if the orientation is horizontal
@@ -55,12 +101,15 @@ public class GameGrid extends AbstractGameGrid {
                 }
             }  
         }
+        */
     }
     
 	@Override
 	public final void generateShips (int numberOfShips) {
         for (int s = 0; s < ships.length; s++) {
-            this.ships[s] = new BattleShip("Ship "+(s+1));
+            BattleShip battleship = new BattleShip("Ship "+(s+1));
+            this.ships[s] = battleship;
+            //placeShip(battleship);
         }
     }
 }
