@@ -24,7 +24,6 @@ public class GameGrid extends AbstractGameGrid {
         }
     }
     
-    // method not working at the moment
 	@Override
 	public final void placeShip (BattleShip ship) {
         Random random = new Random(); // create Random object
@@ -38,7 +37,6 @@ public class GameGrid extends AbstractGameGrid {
             for(int i = 0; i < super.gameGrid.length; i++) {
                 for(int j = 0; j < super.gameGrid[i].length; j++) {
                     if(super.gameGrid[randX][randY] == "."){
-                        //for(int c = 0; c < 3; c++) {
                             this.gameGrid[randX][randY] = "*";
                             this.gameGrid[randX][randY+1] = "*";
                             this.gameGrid[randX][randY+2] = "*";
@@ -48,7 +46,6 @@ public class GameGrid extends AbstractGameGrid {
                             coordinates[1][0] = randY+1;
                             coordinates[2][0] = randX;
                             coordinates[2][0] = randY+2;
-                        //}
                     }
                 }
             }
@@ -58,7 +55,6 @@ public class GameGrid extends AbstractGameGrid {
             for(int i = 0; i < super.gameGrid.length; i++) {
                 for(int j = 0; j < 3; j++) {
                     if(super.gameGrid[randX][randY] == "."){
-                        //for(int c = 0; c < 3; c++) {
                             this.gameGrid[randX][randY] = "*";
                             this.gameGrid[randX+1][randY] = "*";
                             this.gameGrid[randX+2][randY] = "*";
@@ -66,42 +62,13 @@ public class GameGrid extends AbstractGameGrid {
                             coordinates[0][1] = randY;
                             coordinates[1][0] = randX+1;
                             coordinates[1][0] = randY;
-                            coordinates[i][0] = randX+2;
-                            coordinates[i][0] = randY;
-                        //}
+                            coordinates[2][0] = randX+2;
+                            coordinates[2][0] = randY;
                     }
                 }
             }
         }
         ship.setShipCoordinates(coordinates);
-        /*
-        for(int i = 1; i < gameGrid.length; i++) { // iterate through the rows of the grid
-            for(int j = 1; j < gameGrid[i].length; j++) { // iterate through the columns of the grid
-                if(ship.shipOrientation == "horizontal") { // check if the orientation is horizontal
-                    int[][] shipCoordinatesRandomH = new int[ship.size][2]; // generate an array to store locations
-                    int randX = random.nextInt(gameGrid.length + 1); // generate a random x-coordinate
-                    int randY = random.nextInt(gameGrid[i].length + 1); // generate a random y-coordinate
-                    for(int z = 0; z < ship.size; z++) { // iterate through the length of the ship
-                        gameGrid[randX][randY-z] = "*"; // assign a ship marker to the random location
-                        shipCoordinatesRandomH[z][0] = randX; // assign an x-location in locations array
-                        shipCoordinatesRandomH[z][1] = randY-z; // assign a y-location in locations array
-                    }
-                    ship.setShipCoordinates(shipCoordinatesRandomH); // update ships array with all coordinates
-                }
-                else { // if the ship is not horizontal, it can only be vertical
-                    int[][] shipCoordinatesRandomV = new int[ship.size][2]; // generate an array to store locations
-                    int randX = random.nextInt(gameGrid.length + 1); // generate a random x-coordinate
-                    int randY = random.nextInt(gameGrid[i].length + 1); // generate a random y-coordinate
-                    for(int z = 0; z < ship.size; z++) { // iterate through the length of the ship
-                        gameGrid[randX-z][randY] = "*"; // assign a ship marker to the random location
-                        shipCoordinatesRandomV[z][0] = randX-z; // assign an x-location in locations array
-                        shipCoordinatesRandomV[z][1] = randY; // assign a y-location in locations array
-                    }
-                    ship.setShipCoordinates(shipCoordinatesRandomV); // update ships array with all coordinates
-                }
-            }  
-        }
-        */
     }
     
 	@Override

@@ -1,5 +1,8 @@
 package CS2020.assignment1.game;
 
+import java.lang.Integer;
+import java.util.Random;
+
 public class Game implements GameControls {
 
     public PlayerGameGrid player;
@@ -11,7 +14,55 @@ public class Game implements GameControls {
     }
 
     public void playRound (String input) {
-        // fill in
+        
+        String[] splitCoordinates = input.split(",");
+        int xCoordinates = 0; // initialise local variable for x-coordinate
+        int yCoordinates = 0; // initialise local variable for y-coordinate
+
+        if(splitCoordinates.length == 2) {
+            xCoordinates = Integer.parseInt(splitCoordinates[0]); // retrieves the x-coordinate from input
+            yCoordinates = Integer.parseInt(splitCoordinates[1]); // retrieves the y-coordinate from input
+        }
+        else {
+            System.out.println("Your input is in an invalid format: enter coordinates in the format 'x,y'.");
+        }
+
+        System.out.println("Player is attacking");
+
+        // iterate through opponent's ship array
+        for(int ship = 0; ship < opponent.ships.length; ship++) {
+            if(opponent.ships[ship].checkAttack(xCoordinates, yCoordinates) == true) {
+                opponent.gameGrid[xCoordinates][yCoordinates] = "X";
+                System.out.println("HIT "+opponent.ships[ship].name+"!!!");
+            }
+            else {
+                opponent.gameGrid[xCoordinates][yCoordinates] = "%";
+                System.out.println("MISS!!!");
+            }
+        }
+
+        System.out.println("Opponent is attacking");
+
+        Random random = new Random();
+
+        int xCoord = random.nextInt(player.gameGrid.length);
+        int yCoord = random.nextInt(player.gameGrid[0].length);
+
+        for(int ship = 0; ship < player.ships.length; ship++) {
+            if(player.ships[ship].checkAttack(xCoord, yCoord) == true) {
+                player.gameGrid[xCoord][yCoord] = "X";
+                System.out.println("HIT"+player.ships[ship].name+"!!!");
+            }
+            else {
+                player.gameGrid[xCoord][yCoord] = "%";
+                System.out.println("MISS!!!");
+            }
+        }
+        System.out.println("Player's Grid");
+        player.printGrid();
+
+        System.out.println("Opponent's Grid");
+        opponent.printGrid();
     }
 	
 	public boolean checkVictory () {
