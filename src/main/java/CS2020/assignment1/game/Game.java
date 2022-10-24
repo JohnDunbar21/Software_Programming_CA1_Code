@@ -113,7 +113,7 @@ public class Game implements GameControls {
 	
 	public void exitGame (String input) {
         String userInput = input.toLowerCase(); // ensures that the command is in lower case
-        if(userInput == "exit") {
+        if(userInput.contains("exit")) {
             System.exit(0); // exits the program
         }
     }

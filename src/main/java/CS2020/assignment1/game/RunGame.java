@@ -28,11 +28,12 @@ public class RunGame {
 
         String attack = input.nextLine();
 
-        while(!(attack.contains("exit")) && !(game.checkVictory())) {
-
+        while(!(game.checkVictory())) {
+            
             // assign the next value of 'attack' to the user's input
             try {
                 attack = input.nextLine();
+                game.exitGame(attack); 
                 game.playRound(attack);
             } catch(ArrayIndexOutOfBoundsException e) {
                 System.out.println("Out of bounds, boy!");
