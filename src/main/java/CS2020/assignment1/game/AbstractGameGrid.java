@@ -5,6 +5,7 @@ public abstract class AbstractGameGrid {
 	public String [][] gameGrid;
 	public BattleShip[] ships;
 
+	// initialise the instance variables with input parameters
 	public 	AbstractGameGrid(int width, int height, int numberOfShips) {
 		this.gameGrid = new String[width][height];
 		this.ships = new BattleShip[numberOfShips];
