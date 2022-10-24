@@ -107,6 +107,7 @@ public class Game implements GameControls {
         }
         else if(opponentHits == 0) {
             System.out.println("You have won!");
+            return true;
         }
         return false;
     }
