@@ -43,9 +43,9 @@ public class GameGrid extends AbstractGameGrid {
                             coordinates[0][0] = randX;
                             coordinates[0][1] = randY;
                             coordinates[1][0] = randX;
-                            coordinates[1][0] = randY+1;
+                            coordinates[1][1] = randY+1;
                             coordinates[2][0] = randX;
-                            coordinates[2][0] = randY+2;
+                            coordinates[2][1] = randY+2;
                     }
                 }
             }
@@ -61,9 +61,9 @@ public class GameGrid extends AbstractGameGrid {
                             coordinates[0][0] = randX;
                             coordinates[0][1] = randY;
                             coordinates[1][0] = randX+1;
-                            coordinates[1][0] = randY;
+                            coordinates[1][1] = randY;
                             coordinates[2][0] = randX+2;
-                            coordinates[2][0] = randY;
+                            coordinates[2][1] = randY;
                     }
                 }
             }

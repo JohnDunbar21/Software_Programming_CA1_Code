@@ -20,7 +20,7 @@ public class OpponentGameGrid extends GameGrid {
         }
         for(int row = 0; row < tempArray.length; row++) {
             for(int column = 0; column < tempArray[row].length; column++) {
-                System.out.print(tempArray[row][column]);
+                System.out.print(tempArray[row][column]+" ");
             }
             System.out.println(); // start new line
         }

@@ -36,9 +36,14 @@ public class Game implements GameControls {
                 System.out.println("HIT "+opponent.ships[ship].name+"!!!");
             }
             else {
-                opponent.gameGrid[xCoordinates][yCoordinates] = "%";
-                System.out.println("MISS!!!");
+                if(opponent.gameGrid[xCoordinates][yCoordinates] != "X"){
+                    opponent.gameGrid[xCoordinates][yCoordinates] = "%";
+                }
             }
+        }
+
+        if(opponent.gameGrid[xCoordinates][yCoordinates] == "%") {
+            System.out.println("MISS!!!");
         }
 
         System.out.println("Opponent is attacking");
@@ -51,12 +56,16 @@ public class Game implements GameControls {
         for(int ship = 0; ship < player.ships.length; ship++) {
             if(player.ships[ship].checkAttack(xCoord, yCoord) == true) {
                 player.gameGrid[xCoord][yCoord] = "X";
-                System.out.println("HIT"+player.ships[ship].name+"!!!");
+                System.out.println("HIT "+player.ships[ship].name+"!!!");
             }
             else {
-                player.gameGrid[xCoord][yCoord] = "%";
-                System.out.println("MISS!!!");
+                if(player.gameGrid[xCoord][yCoord] != "X"){
+                    player.gameGrid[xCoord][yCoord] = "%";
+                }
             }
+        }
+        if(player.gameGrid[xCoord][yCoord] == "%") {
+            System.out.println("MISS!!!");
         }
         System.out.println("Player's Grid");
         player.printGrid();
@@ -74,6 +83,12 @@ public class Game implements GameControls {
         }
         System.out.println("You have lost!");
         return false;
+
+        
+        //int playerHits = 3 * player.ships.length;
+        //int opponentHits = 3 * opponent.ships.length;
+
+        
     }
 	
 	public void exitGame (String input) {
