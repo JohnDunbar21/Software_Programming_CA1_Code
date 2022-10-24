@@ -75,6 +75,7 @@ public class Game implements GameControls {
     }
 	
 	public boolean checkVictory () {
+        /*
         for(int ship = 0; ship < player.ships.length; ship++) {
             if(player.ships[ship].hits < 3 && opponent.ships[ship].hits == 3) {
                 System.out.println("You have won!");
@@ -83,12 +84,31 @@ public class Game implements GameControls {
         }
         System.out.println("You have lost!");
         return false;
-
+        */
         
-        //int playerHits = 3 * player.ships.length;
-        //int opponentHits = 3 * opponent.ships.length;
+        int playerHits = 3 * player.ships.length;
+        int opponentHits = 3 * opponent.ships.length;
+        for(int ship = 0; ship < opponent.ships.length; ship++) {
+            int opponenthit = opponent.ships[ship].getHits();
+            if(opponenthit > 0) {
+                opponentHits -= opponenthit;
+            }
+        }
+        for(int ship = 0; ship < player.ships.length; ship++) {
+            int playerhit = player.ships[ship].getHits();
+            if(playerhit > 0) {
+                playerHits -= playerhit;
+            }
+        }
 
-        
+        if(playerHits == 0) {
+            System.out.println("You have lost!");
+            return false;
+        }
+        else if(opponentHits == 0) {
+            System.out.println("You have won!");
+        }
+        return false;
     }
 	
 	public void exitGame (String input) {

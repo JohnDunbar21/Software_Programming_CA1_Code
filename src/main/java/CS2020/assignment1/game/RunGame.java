@@ -28,7 +28,7 @@ public class RunGame {
 
         String attack = input.nextLine();
 
-        while(!(attack.contains("exit"))) {
+        while(!(attack.contains("exit")) && !(game.checkVictory())) {
 
             // assign the next value of 'attack' to the user's input
             try {
